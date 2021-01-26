@@ -11,6 +11,7 @@ import KYCSection from '../../components/KYCSection';
 import OurMissionSection from '../../components/OurMissionSection';
 import PrivacyPolicySection from '../../components/PrivacyPolicySection';
 import ContactUsSection from '../../components/ContactUsSection';
+import Footer from '../../components/Footer';
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <OurMissionSection />
       <PrivacyPolicySection />
       <ContactUsSection />
+      <Footer />
     </div>
   );
 };

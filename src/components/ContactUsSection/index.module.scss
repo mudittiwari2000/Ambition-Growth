@@ -3,44 +3,43 @@
   background-color: var(--clr-bg);
   display: flex;
   justify-content: space-between;
-  text-align: justify;
   margin-top: 2em;
-  margin-bottom: 2em;
+  position: relative;
 }
 
 .left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  max-width: 580px;
+  max-width: 680px;
   margin-top: 6em;
   margin-right: 1em;
   margin-left: 1em;
   background-color: var(--clr-bg-form);
 
   @media (max-width: 1440px) {
-    max-width: 570px;
+    max-width: 670px;
     margin-top: 5em;
     margin-right: .95em;
     margin-left: .95em;
   }
 
   @media (max-width: 1080px) {
-    max-width: 560px;
+    max-width: 660px;
     margin-top: 4em;
     margin-right: .9em;
     margin-left: .9em;
   }
 
   @media (max-width: 720px) {
-    max-width: 550px;
+    max-width: 650px;
     margin-top: 3em;
     margin-right: .85em;
     margin-left: .85em;
   }
 
   @media (max-width: 600px) {
-    max-width: 540px;
+    max-width: 640px;
     margin-top: 2em;
     margin-right: 0.8em;
     margin-left: 0.8em;
@@ -69,35 +68,73 @@
     border-color: #fff;
   }
 
-  .textField {
-    width: 96%;
-    max-width: 300px;
+  .textField,
+  .submitBtn,
+  .formControl {
     margin-left: 4em;
     margin-right: auto;
+
+    @media (max-width: 1440px) {
+      margin-left: 3.5em;
+    }
+
+    @media (max-width: 1080px) {
+      margin-left: 3.25em;
+    }
+
+    @media (max-width: 720px) {
+      margin-left: 2.75em;
+    }
+
+    @media (max-width: 600px) {
+      margin-left: 2.25em;
+    }
+  }
+
+  .textField {
+    width: 90%;
+    max-width: 480px;
+
+    @media (max-width: 1440px) {
+      width: 85%;
+    }
+
+    @media (max-width: 1080px) {
+      width: 80%;
+    }
+
+    @media (max-width: 720px) {
+      width: 75%;
+    }
+
+    @media (max-width: 600px) {
+      width: 70%;
+    }
   }
 
   .submitBtn {
     background-color: var(--clr-primary);
-    margin-left: 4em;
-    margin-right: auto;
     margin-top: 2em;
   }
 
+  .terms_of_use {
+    color: #f5f5f5;
+    font-weight: 900;
+  }
 }
 
 .right {
   .illustration {
     width: 560px;
+    position: absolute;
+    left: 43.5%;
+    bottom: 0;
 
     @media (max-width: 1440px) {
       width: 500px;
     }
 
-    @media (max-width: 1080px) {
-      width: 400px;
-    }
-
-    @media (max-width: 720px) {
+    @media (max-width: 1280px) {
       display: none;
     }
   }

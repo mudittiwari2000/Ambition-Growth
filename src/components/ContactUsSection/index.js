@@ -13,10 +13,16 @@ import illustration from '../../assets/images/contact_us_illustration.png';
 // Material Components
 import {
   Button,
+  Checkbox,
   InputAdornment,
   TextField,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  FormGroup,
   makeStyles,
-  withStyles
+  withStyles,
+  useMediaQuery
 } from '@material-ui/core';
 import {
   Smartphone as SmartphoneIcon,
@@ -60,6 +66,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactUsSection = () => {
   const classes = useStyles();
+  const [error, setError] = React.useState(false);
+  const isImageVisible = useMediaQuery('(min-width: 1280px)');
 
   return (
     <section
@@ -70,6 +78,7 @@ const ContactUsSection = () => {
         <h3 className={styles.contact_us__header}>Request a Call Back</h3>
         <form>
           <CssTextField
+            required
             label="Full Name"
             id="contact-us-full-name"
             className={clsx(classes.margin, styles.textField)}
@@ -83,8 +92,10 @@ const ContactUsSection = () => {
             variant="outlined"
           />
           <CssTextField
+            required
             label="Mobile Number"
             id="contact-us-mobile"
+            type="tel"
             className={clsx(classes.margin, styles.textField)}
             InputProps={{
               startAdornment: (
@@ -95,25 +106,57 @@ const ContactUsSection = () => {
             }}
             variant="outlined"
           />
+          <FormControl
+            required
+            error={error}
+            component="fieldset"
+            className={styles.formControl}
+          >
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={!error}
+                    onChange={() => setError((prev) => !prev)}
+                    name="acceptTerms"
+                  />
+                }
+                label={
+                  <p>
+                    I accept the{' '}
+                    <span className={styles.terms_of_use}>Terms of Use</span>.
+                  </p>
+                }
+              />
+            </FormGroup>
+            {error && (
+              <FormHelperText>
+                You need to accept the Terms of Use
+              </FormHelperText>
+            )}
+          </FormControl>
           <Button
             type="submit"
             variant="contained"
             color="primary"
+            size="large"
             className={styles.submitBtn}
           >
             Submit
           </Button>
         </form>
       </aside>
-      <Fade bottom>
-        <figure className={styles.right}>
-          {/* <img
-            className={styles.illustration}
-            src={illustration}
-            alt="Finance illustration"
-          /> */}
-        </figure>
-      </Fade>
+      {isImageVisible && (
+        <Fade bottom>
+          <figure className={styles.right}>
+            <img
+              className={styles.illustration}
+              src={illustration}
+              alt="Contact Us illustration"
+            />
+          </figure>
+        </Fade>
+      )}
     </section>
   );
 };

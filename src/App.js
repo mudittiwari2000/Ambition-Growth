@@ -1,9 +1,12 @@
 import { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+// Utilities
+import LinearProgress from '@material-ui/core/LinearProgress'
+
 const App = () => (
   <Router>
-    <Suspense fallback={<div>Loading . . .</div>}>
+    <Suspense fallback={<LinearProgress />}>
       <Route
         exact
         path="/AboutUs"

@@ -1,17 +1,18 @@
-import React from 'react';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 // Utilities
-import clsx from 'clsx';
-import { Fade } from 'react-reveal';
+import clsx from 'clsx'
+import { Fade } from 'react-reveal'
 
 // Stylesheet
-import styles from './index.module.scss';
+import styles from './index.module.scss'
 
 // Assets
-import illustration from '../../assets/images/banner_illustration.png';
+import illustration from '../../assets/images/banner_illustration.png'
 
 // Material Components
-import { Button } from '@material-ui/core';
+import { Button } from '@material-ui/core'
 
 const BannerSection = () => {
   return (
@@ -42,13 +43,13 @@ const BannerSection = () => {
             color="primary"
             className={clsx(styles.btn_outlined, styles.btn)}
           >
-            Discover More
+            <NavLink to="/InvestmentPlan">Discover More</NavLink>
           </Button>
           <Button
             size="large"
             className={clsx(styles.btn_contained, styles.btn)}
           >
-            View More
+            <NavLink to="/AboutUs">View More</NavLink>
           </Button>
         </div>
       </aside>
@@ -62,7 +63,7 @@ const BannerSection = () => {
         </figure>
       </Fade>
     </section>
-  );
-};
+  )
+}
 
-export default BannerSection;
+export default BannerSection

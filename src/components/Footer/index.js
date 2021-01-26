@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Link, animateScroll as scroll } from 'react-scroll';
-import clsx from 'clsx';
-import styles from './index.module.scss';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { Link, animateScroll as scroll } from 'react-scroll'
+import clsx from 'clsx'
+import styles from './index.module.scss'
 
 // Material Components
 import {
@@ -13,7 +13,7 @@ import {
   Paper,
   Menu,
   MenuItem
-} from '@material-ui/core';
+} from '@material-ui/core'
 
 // Material Icons
 import {
@@ -24,22 +24,22 @@ import {
   Pinterest as PinterestIcon,
   YouTube as YouTubeIcon,
   ArrowDropUp as ArrowDropUpIcon
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 
 const Footer = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
   const openMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
+    scroll.scrollToTop()
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   return (
     <footer className={styles.footer__section}>
@@ -127,20 +127,20 @@ const Footer = () => {
               </NavLink>
             </li>
             <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-              <Link
+              <NavLink
                 activeClass={styles.activeNavItem}
-                to="AboutUs"
+                to="/AboutUs"
                 smooth={true}
                 offset={-10}
                 spy={true}
                 duration={400}
               >
                 About Us
-              </Link>
+              </NavLink>
             </li>
             <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
               <NavLink
-                to="/investmentPlan"
+                to="/InvestmentPlan"
                 activeClassName={styles.activeNavItem}
               >
                 Investment Plan
@@ -175,45 +175,45 @@ const Footer = () => {
         >
           <MenuItem className={styles['nav-item']}>
             {' '}
-            <Link
+            <NavLink
               activeClass={styles.activeNavItem}
-              to="KYC"
+              to="/KYC"
               smooth={true}
               offset={-10}
               spy={true}
               duration={400}
             >
               KYC
-            </Link>
+            </NavLink>
           </MenuItem>
           <MenuItem className={styles['nav-item']}>
-            <Link
+            <NavLink
               activeClass={styles.activeNavItem}
-              to="OurMission"
+              to="/OurMission"
               smooth={true}
               offset={-10}
               spy={true}
               duration={400}
             >
               Our Mission
-            </Link>
+            </NavLink>
           </MenuItem>
           <MenuItem className={styles['nav-item']}>
-            <Link
+            <NavLink
               activeClass={styles.activeNavItem}
-              to="PrivacyPolicy"
+              to="/PrivacyPolicy"
               smooth={true}
               offset={-10}
               spy={true}
               duration={400}
             >
               Privacy Policy
-            </Link>
+            </NavLink>
           </MenuItem>
         </Menu>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

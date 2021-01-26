@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 // Utilities
-import clsx from 'clsx';
-import { Fade } from 'react-reveal';
+import clsx from 'clsx'
+import { Fade } from 'react-reveal'
 
 // Stylesheet
-import styles from './index.module.scss';
+import styles from './index.module.scss'
 
 // Assets
-import illustration from '../../assets/images/our_mission_illustration.png';
+import illustration from '../../assets/images/our_mission_illustration.png'
 
 const OurMissionSection = () => {
   return (
@@ -67,7 +67,7 @@ const OurMissionSection = () => {
         </div>
       </aside>
     </section>
-  );
-};
+  )
+}
 
-export default OurMissionSection;
+export default OurMissionSection

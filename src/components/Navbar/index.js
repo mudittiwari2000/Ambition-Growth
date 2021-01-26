@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Link, animateScroll as scroll } from 'react-scroll';
-import styles from './index.module.scss';
+import React, { useState, useEffect, useCallback } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Link, animateScroll as scroll } from 'react-scroll'
+import styles from './index.module.scss'
 
 // Material Components
 import {
@@ -12,60 +12,62 @@ import {
   Tooltip,
   IconButton,
   useMediaQuery
-} from '@material-ui/core';
+} from '@material-ui/core'
 
 // Material Icons
 import {
   ArrowDropDown as ArrowDropDownIcon,
   Menu as MenuIcon
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 const Navbar = () => {
-  const [pageY, setPageY] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const isMdUp = useMediaQuery('(min-width: 1080px)');
+  const [pageY, setPageY] = useState(0)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [isDropdownOpen, setDropdownOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const isMdUp = useMediaQuery('(min-width: 1080px)')
 
   const openDrawer = () => {
-    setDrawerOpen(true);
-  };
+    setDrawerOpen(true)
+  }
 
   const openMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
-  };
+    setDropdownOpen((prev) => !prev)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
+    scroll.scrollToTop()
+  }
 
   const handleScroll = useCallback(() => {
-    setPageY(window.scrollY);
-  }, [setPageY]);
+    setPageY(window.scrollY)
+  }, [setPageY])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
 
   return (
     <nav className={clsx(styles.navbar, pageY > 20 ? styles.sticky : '')}>
-      <img
-        className={styles.logo}
-        src="/static/images/logo.png"
-        alt="Ambition Growth"
-      />
+      <NavLink exact to="/">
+        <img
+          className={styles.logo}
+          src="/static/images/logo.png"
+          alt="Ambition Growth"
+        />
+      </NavLink>
       {isMdUp ? (
         <ul className={styles['nav-menu']}>
           <li
@@ -77,20 +79,20 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-            <Link
+            <NavLink
               activeClass={styles.activeNavItem}
-              to="AboutUs"
+              to="/AboutUs"
               smooth={true}
               offset={-10}
               spy={true}
               duration={400}
             >
               About Us
-            </Link>
+            </NavLink>
           </li>
           <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
             <NavLink
-              to="/investmentPlan"
+              to="/InvestmentPlan"
               activeClassName={styles.activeNavItem}
             >
               Investment Plan
@@ -146,20 +148,20 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className={clsx(styles['nav-item'], styles['top-spacing'])}>
-            <Link
+            <NavLink
               activeClass={styles.activeNavItem}
-              to="AboutUs"
+              to="/AboutUs"
               smooth={true}
               offset={-10}
               spy={true}
               duration={400}
             >
               About Us
-            </Link>
+            </NavLink>
           </li>
           <li className={clsx(styles['nav-item'], styles['top-spacing'])}>
             <NavLink
-              to="/investmentPlan"
+              to="/InvestmentPlan"
               activeClassName={styles.activeNavItem}
             >
               Investment Plan
@@ -181,46 +183,46 @@ const Navbar = () => {
           {isDropdownOpen && (
             <>
               <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
-                <Link
+                <NavLink
                   activeClass={styles.activeNavItem}
-                  to="KYC"
+                  to="/KYC"
                   smooth={true}
                   offset={-10}
                   spy={true}
                   duration={400}
                 >
                   KYC
-                </Link>
+                </NavLink>
               </li>
               <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
-                <Link
+                <NavLink
                   activeClass={styles.activeNavItem}
-                  to="OurMission"
+                  to="/OurMission"
                   smooth={true}
                   offset={-10}
                   spy={true}
                   duration={400}
                 >
                   Our Mission
-                </Link>
+                </NavLink>
               </li>
               <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
-                <Link
+                <NavLink
                   activeClass={styles.activeNavItem}
-                  to="PrivacyPolicy"
+                  to="/PrivacyPolicy"
                   smooth={true}
                   offset={-10}
                   spy={true}
                   duration={400}
                 >
                   Privacy Policy
-                </Link>
+                </NavLink>
               </li>
               <br />
             </>
           )}
           <li className={clsx(styles['nav-item'], styles['top-spacing'])}>
-            <Link
+            <NavLink
               activeClass={styles.activeNavItem}
               to="ContactUs"
               smooth={true}
@@ -229,7 +231,7 @@ const Navbar = () => {
               duration={400}
             >
               Contact Us
-            </Link>
+            </NavLink>
           </li>
         </Box>
       </Drawer>
@@ -242,44 +244,44 @@ const Navbar = () => {
       >
         <MenuItem className={styles['nav-item']}>
           {' '}
-          <Link
+          <NavLink
             activeClass={styles.activeNavItem}
-            to="KYC"
+            to="/KYC"
             smooth={true}
             offset={-10}
             spy={true}
             duration={400}
           >
             KYC
-          </Link>
+          </NavLink>
         </MenuItem>
         <MenuItem className={styles['nav-item']}>
-          <Link
+          <NavLink
             activeClass={styles.activeNavItem}
-            to="OurMission"
+            to="/OurMission"
             smooth={true}
             offset={-10}
             spy={true}
             duration={400}
           >
             Our Mission
-          </Link>
+          </NavLink>
         </MenuItem>
         <MenuItem className={styles['nav-item']}>
-          <Link
+          <NavLink
             activeClass={styles.activeNavItem}
-            to="PrivacyPolicy"
+            to="/PrivacyPolicy"
             smooth={true}
             offset={-10}
             spy={true}
             duration={400}
           >
             Privacy Policy
-          </Link>
+          </NavLink>
         </MenuItem>
       </Menu>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

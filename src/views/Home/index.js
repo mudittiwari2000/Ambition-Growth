@@ -1,17 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 // Custom Components
-import TitleComponent from '../../components/TitleComponent';
+import TitleComponent from '../../components/TitleComponent'
 
 // Sub Components
-import Navbar from '../../components/Navbar';
-import BannerSection from '../../components/BannerSection';
-import AboutUsSection from '../../components/AboutUsSection';
-import KYCSection from '../../components/KYCSection';
-import OurMissionSection from '../../components/OurMissionSection';
-import PrivacyPolicySection from '../../components/PrivacyPolicySection';
-import ContactUsSection from '../../components/ContactUsSection';
-import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar'
+import BannerSection from '../../components/BannerSection'
+import ContactUsSection from '../../components/ContactUsSection'
+import Footer from '../../components/Footer'
 
 const Home = () => {
   return (
@@ -19,14 +15,10 @@ const Home = () => {
       <TitleComponent title="Home Page | Ambition Growth" />
       <Navbar />
       <BannerSection />
-      <AboutUsSection />
-      <KYCSection />
-      <OurMissionSection />
-      <PrivacyPolicySection />
       <ContactUsSection />
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

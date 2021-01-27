@@ -5,22 +5,18 @@ import TitleComponent from '../../components/TitleComponent';
 
 // Sub Components
 import Navbar from '../../components/Navbar';
-import MutualFundSection from '../../components/MutualFundSection';
-import LongTermInvestmentSection from '../../components/LongTermInvestmentSection';
 import AmbitionGrowthInvestmentSection from '../../components/AmbitionGrowthInvestmentSection';
 import Footer from '../../components/Footer';
 
-const InvestmentPlan = () => {
+const AmbitionGrowthInvestment = () => {
   return (
     <div>
-      <TitleComponent title="Investment Plan | Ambition Growth" />
+      <TitleComponent title="Ambition Growth Investment | Ambition Growth" />
       <Navbar />
-      <MutualFundSection />
-      <LongTermInvestmentSection />
       <AmbitionGrowthInvestmentSection />
       <Footer />
     </div>
   );
 };
 
-export default InvestmentPlan;
+export default AmbitionGrowthInvestment;

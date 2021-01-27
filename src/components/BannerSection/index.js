@@ -1,18 +1,18 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // Utilities
-import clsx from 'clsx'
-import { Fade } from 'react-reveal'
+import clsx from 'clsx';
+import { Fade } from 'react-reveal';
 
 // Stylesheet
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
 // Assets
-import illustration from '../../assets/images/banner_illustration.png'
+import illustration from '../../assets/images/banner_illustration.png';
 
 // Material Components
-import { Button } from '@material-ui/core'
+import { Button } from '@material-ui/core';
 
 const BannerSection = () => {
   return (
@@ -20,7 +20,6 @@ const BannerSection = () => {
       <aside className={styles.left}>
         <div className={styles.sub_header__container}>
           <p className={styles.sub_header__text}>
-            {' '}
             It’s About Planning For The Future
           </p>
           <div className={styles.sub_header__line}></div>
@@ -43,7 +42,7 @@ const BannerSection = () => {
             color="primary"
             className={clsx(styles.btn_outlined, styles.btn)}
           >
-            <NavLink to="/InvestmentPlan">Discover More</NavLink>
+            <NavLink to="/MutualFunds">Discover More</NavLink>
           </Button>
           <Button
             size="large"
@@ -63,7 +62,7 @@ const BannerSection = () => {
         </figure>
       </Fade>
     </section>
-  )
-}
+  );
+};
 
-export default BannerSection
+export default BannerSection;

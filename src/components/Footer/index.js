@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import clsx from 'clsx';
 import styles from './index.module.scss';
@@ -24,15 +24,24 @@ import {
   Twitter as TwitterIcon,
   Pinterest as PinterestIcon,
   YouTube as YouTubeIcon,
-  ArrowDropUp as ArrowDropUpIcon
+  ArrowDropUp as ArrowDropUpIcon,
+  Contacts as ContactsIcon,
+  Home as HomeIcon
 } from '@material-ui/icons';
 
 const Footer = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { pathname } = useLocation();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorInvestmentEl, setAnchorInvestmentEl] = useState(null);
+
   const isMdUp = useMediaQuery('(min-width: 1280px)');
 
   const openMenu = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const openInvestmentMenu = (event) => {
+    setAnchorInvestmentEl(event.currentTarget);
   };
 
   const scrollToTop = () => {
@@ -41,6 +50,10 @@ const Footer = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleInvestmentClose = () => {
+    setAnchorInvestmentEl(null);
   };
 
   return (
@@ -115,6 +128,31 @@ const Footer = () => {
               </IconButton>
             </li>
           </ul>
+          <ul className={styles.footer__section_upper_right_contact_list}>
+            <li
+              className={styles.footer__section_upper_right_contact_list_item}
+            >
+              <a href="mailto:ambitiongrowth@yahoo.com">
+                ambitiongrowth@yahoo.com&nbsp; <EmailIcon />
+              </a>
+            </li>
+            <li
+              className={styles.footer__section_upper_right_contact_list_item}
+            >
+              <a href="tel:+918889899900">
+                +91 8889899900 &nbsp;
+                <ContactsIcon />
+              </a>
+            </li>
+            <li
+              className={styles.footer__section_upper_right_contact_list_item}
+            >
+              <address>
+                323 Tilwara Rd, Ward no.32, Jabalpur, 482003 &nbsp;
+                <HomeIcon />
+              </address>
+            </li>
+          </ul>
         </aside>
       </div>
       <div className={styles.footer__section_lower}>
@@ -132,24 +170,22 @@ const Footer = () => {
               </NavLink>
             </li>
             <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-              <NavLink
-                activeClass={styles.activeNavItem}
-                to="/AboutUs"
-                smooth={true}
-                offset={-10}
-                spy={true}
-                duration={400}
-              >
+              <NavLink activeClassName={styles.activeNavItem} to="/AboutUs">
                 About Us
               </NavLink>
             </li>
-            <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-              <NavLink
-                to="/InvestmentPlan"
-                activeClassName={styles.activeNavItem}
+            <li
+              className={clsx(styles['nav-item'], styles['left-spacing'])}
+              onClick={(event) => openInvestmentMenu(event)}
+            >
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="flex-start"
               >
                 Investment Plan
-              </NavLink>
+                <ArrowDropUpIcon />
+              </Box>
             </li>
             <li
               className={clsx(styles['nav-item'], styles['left-spacing'])}
@@ -160,58 +196,77 @@ const Footer = () => {
                 justifyContent="space-between"
                 alignItems="flex-start"
               >
-                <a href="#!">Insight</a>
+                Insight
                 <ArrowDropUpIcon />
               </Box>
             </li>
             <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-              <Link activeClass={styles.activeNavItem} to="ContactUs">
-                Contact Us
-              </Link>
+              {pathname === '/' ? (
+                <Link
+                  activeClass={styles.activeNavItem}
+                  to="ContactUs"
+                  smooth={true}
+                  duration={500}
+                >
+                  Contact Us
+                </Link>
+              ) : (
+                <NavLink exact to="/" activeClassName={styles.activeNavItem}>
+                  Contact Us
+                </NavLink>
+              )}
             </li>
           </ul>
         </nav>
         <Menu
-          id="invest-drop-down"
+          id="insights-drop-down"
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
           <MenuItem className={styles['nav-item']}>
-            <NavLink
-              activeClass={styles.activeNavItem}
-              to="/KYC"
-              smooth={true}
-              offset={-10}
-              spy={true}
-              duration={400}
-            >
+            <NavLink activeClassName={styles.activeNavItem} to="/KYC">
               KYC
             </NavLink>
           </MenuItem>
           <MenuItem className={styles['nav-item']}>
-            <NavLink
-              activeClass={styles.activeNavItem}
-              to="/OurMission"
-              smooth={true}
-              offset={-10}
-              spy={true}
-              duration={400}
-            >
+            <NavLink activeClassName={styles.activeNavItem} to="/OurMission">
               Our Mission
             </NavLink>
           </MenuItem>
           <MenuItem className={styles['nav-item']}>
-            <NavLink
-              activeClass={styles.activeNavItem}
-              to="/PrivacyPolicy"
-              smooth={true}
-              offset={-10}
-              spy={true}
-              duration={400}
-            >
+            <NavLink activeClassName={styles.activeNavItem} to="/PrivacyPolicy">
               Privacy Policy
+            </NavLink>
+          </MenuItem>
+        </Menu>
+        <Menu
+          id="investmest-drop-down"
+          anchorEl={anchorInvestmentEl}
+          keepMounted
+          open={Boolean(anchorInvestmentEl)}
+          onClose={handleInvestmentClose}
+        >
+          <MenuItem className={styles['nav-item']}>
+            <NavLink activeClassName={styles.activeNavItem} to="/MutualFunds">
+              Mutual Funds
+            </NavLink>
+          </MenuItem>
+          <MenuItem className={styles['nav-item']}>
+            <NavLink
+              activeClassName={styles.activeNavItem}
+              to="/LongtermInvestment"
+            >
+              Longterm Investment
+            </NavLink>
+          </MenuItem>
+          <MenuItem className={styles['nav-item']}>
+            <NavLink
+              activeClassName={styles.activeNavItem}
+              to="/AmbitionGrowthInvestment"
+            >
+              Ambition Growth Investment
             </NavLink>
           </MenuItem>
         </Menu>

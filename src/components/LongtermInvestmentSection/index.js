@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 // Assets
 import illustration from '../../assets/images/our_mission_illustration.png';
 
-const LongTermInvestmentSection = () => {
+const LongtermInvestmentSection = () => {
   return (
     <section
       className={clsx(styles.long_term_investment__section, 'container')}
@@ -38,4 +38,4 @@ const LongTermInvestmentSection = () => {
   );
 };
 
-export default LongTermInvestmentSection;
+export default LongtermInvestmentSection;

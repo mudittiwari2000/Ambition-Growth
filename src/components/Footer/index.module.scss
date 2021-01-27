@@ -13,6 +13,10 @@
   flex-wrap: wrap;
   align-items: center;
 
+  @media (max-width: 600px) {
+    padding: 1em;
+  }
+
   &_left {
     flex: 1;
     max-width: 600px;
@@ -21,7 +25,6 @@
   &_right {
     flex: 1;
     margin-left: auto;
-    margin-right: 1em;
     display: flex;
     flex-direction: column;
 
@@ -37,6 +40,30 @@
 
       &>li+li {
         margin-left: .05em;
+      }
+    }
+
+    &_contact_list {
+      width: 100;
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.15em;
+      margin-right: 1em;
+      align-self: flex-end;
+
+      &_item {
+        text-align: right;
+        transition: color 300ms ease-out;
+        cursor: pointer;
+
+        &:nth-child(1):hover,
+        &:nth-child(2):hover {
+          color: var(--clr-primary);
+        }
+      }
+
+      &>li+li {
+        margin-top: .45em;
       }
     }
   }

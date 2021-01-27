@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import styles from './index.module.scss';
 
@@ -23,10 +23,13 @@ import {
 import clsx from 'clsx';
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   const [pageY, setPageY] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isInvestmentDropdownOpen, setInvestmentDropdownOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorInvestmentEl, setAnchorInvestmentEl] = useState(null);
   const isMdUp = useMediaQuery('(min-width: 1080px)');
 
   const openDrawer = () => {
@@ -37,12 +40,24 @@ const Navbar = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  const openInvestmentMenu = (event) => {
+    setAnchorInvestmentEl(event.currentTarget);
+  };
+
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
 
+  const toggleInvestmentDropdown = () => {
+    setInvestmentDropdownOpen((prev) => !prev);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleInvestmentClose = () => {
+    setAnchorInvestmentEl(null);
   };
 
   const scrollToTop = () => {
@@ -58,6 +73,10 @@ const Navbar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [pathname]);
 
   return (
     <nav className={clsx(styles.navbar, pageY > 20 ? styles.sticky : '')}>
@@ -83,13 +102,18 @@ const Navbar = () => {
               About Us
             </NavLink>
           </li>
-          <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-            <NavLink
-              to="/InvestmentPlan"
-              activeClassName={styles.activeNavItem}
+          <li
+            className={clsx(styles['nav-item'], styles['left-spacing'])}
+            onClick={(event) => openInvestmentMenu(event)}
+          >
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-start"
             >
               Investment Plan
-            </NavLink>
+              <ArrowDropDownIcon />
+            </Box>
           </li>
           <li
             className={clsx(styles['nav-item'], styles['left-spacing'])}
@@ -100,19 +124,25 @@ const Navbar = () => {
               justifyContent="space-between"
               alignItems="flex-start"
             >
-              <a href="#!">Insight</a>
+              Insight
               <ArrowDropDownIcon />
             </Box>
           </li>
           <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-            <Link
-              activeClass={styles.activeNavItem}
-              to="ContactUs"
-              smooth={true}
-              duration={500}
-            >
-              Contact Us
-            </Link>
+            {pathname === '/' ? (
+              <Link
+                activeClass={styles.activeNavItem}
+                to="ContactUs"
+                smooth={true}
+                duration={500}
+              >
+                Contact Us
+              </Link>
+            ) : (
+              <NavLink exact to="/" activeClassName={styles.activeNavItem}>
+                Contact Us
+              </NavLink>
+            )}
           </li>
         </ul>
       ) : (
@@ -150,14 +180,45 @@ const Navbar = () => {
               About Us
             </NavLink>
           </li>
-          <li className={clsx(styles['nav-item'], styles['top-spacing'])}>
-            <NavLink
-              to="/InvestmentPlan"
-              activeClassName={styles.activeNavItem}
+          <li
+            className={clsx(styles['nav-item'], styles['top-spacing'])}
+            onClick={(event) => toggleInvestmentDropdown(event)}
+          >
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-start"
             >
               Investment Plan
-            </NavLink>
+              <ArrowDropDownIcon />
+            </Box>
           </li>
+          {isInvestmentDropdownOpen && (
+            <>
+              <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
+                <NavLink activeClass={styles.activeNavItem} to="/MutualFunds">
+                  Mutual Funds
+                </NavLink>
+              </li>
+              <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
+                <NavLink
+                  activeClass={styles.activeNavItem}
+                  to="/LongtermInvestment"
+                >
+                  Longterm Investment
+                </NavLink>
+              </li>
+              <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
+                <NavLink
+                  activeClass={styles.activeNavItem}
+                  to="/AmbitionGrowthInvestment"
+                >
+                  Ambition Growth Investment
+                </NavLink>
+              </li>
+              <br />
+            </>
+          )}
           <li
             className={clsx(styles['nav-item'], styles['top-spacing'])}
             onClick={toggleDropdown}
@@ -167,45 +228,24 @@ const Navbar = () => {
               justifyContent="space-between"
               alignItems="flex-start"
             >
-              <a href="#!">Insight</a>
+              Insight
               <ArrowDropDownIcon />
             </Box>
           </li>
           {isDropdownOpen && (
             <>
               <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
-                <NavLink
-                  activeClass={styles.activeNavItem}
-                  to="/KYC"
-                  smooth={true}
-                  offset={-10}
-                  spy={true}
-                  duration={400}
-                >
+                <NavLink activeClass={styles.activeNavItem} to="/KYC">
                   KYC
                 </NavLink>
               </li>
               <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
-                <NavLink
-                  activeClass={styles.activeNavItem}
-                  to="/OurMission"
-                  smooth={true}
-                  offset={-10}
-                  spy={true}
-                  duration={400}
-                >
+                <NavLink activeClass={styles.activeNavItem} to="/OurMission">
                   Our Mission
                 </NavLink>
               </li>
               <li className={clsx(styles['nav-item'], styles['dropdown-item'])}>
-                <NavLink
-                  activeClass={styles.activeNavItem}
-                  to="/PrivacyPolicy"
-                  smooth={true}
-                  offset={-10}
-                  spy={true}
-                  duration={400}
-                >
+                <NavLink activeClass={styles.activeNavItem} to="/PrivacyPolicy">
                   Privacy Policy
                 </NavLink>
               </li>
@@ -213,61 +253,72 @@ const Navbar = () => {
             </>
           )}
           <li className={clsx(styles['nav-item'], styles['top-spacing'])}>
-            <NavLink
-              activeClass={styles.activeNavItem}
-              to="ContactUs"
-              smooth={true}
-              offset={-10}
-              spy={true}
-              duration={400}
-            >
-              Contact Us
-            </NavLink>
+            {pathname === '/' ? (
+              <Link
+                activeClass={styles.activeNavItem}
+                to="ContactUs"
+                smooth={true}
+                duration={500}
+              >
+                Contact Us
+              </Link>
+            ) : (
+              <NavLink exact to="/" activeClassName={styles.activeNavItem}>
+                Contact Us
+              </NavLink>
+            )}
           </li>
         </Box>
       </Drawer>
       <Menu
-        id="invest-drop-down"
+        id="insights-drop-down"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
         <MenuItem className={styles['nav-item']}>
-          {' '}
-          <NavLink
-            activeClass={styles.activeNavItem}
-            to="/KYC"
-            smooth={true}
-            offset={-10}
-            spy={true}
-            duration={400}
-          >
+          <NavLink activeClassName={styles.activeNavItem} to="/KYC">
             KYC
           </NavLink>
         </MenuItem>
         <MenuItem className={styles['nav-item']}>
-          <NavLink
-            activeClass={styles.activeNavItem}
-            to="/OurMission"
-            smooth={true}
-            offset={-10}
-            spy={true}
-            duration={400}
-          >
+          <NavLink activeClassName={styles.activeNavItem} to="/OurMission">
             Our Mission
           </NavLink>
         </MenuItem>
         <MenuItem className={styles['nav-item']}>
-          <NavLink
-            activeClass={styles.activeNavItem}
-            to="/PrivacyPolicy"
-            smooth={true}
-            offset={-10}
-            spy={true}
-            duration={400}
-          >
+          <NavLink activeClassName={styles.activeNavItem} to="/PrivacyPolicy">
             Privacy Policy
+          </NavLink>
+        </MenuItem>
+      </Menu>
+      <Menu
+        id="investmest-drop-down"
+        anchorEl={anchorInvestmentEl}
+        keepMounted
+        open={Boolean(anchorInvestmentEl)}
+        onClose={handleInvestmentClose}
+      >
+        <MenuItem className={styles['nav-item']}>
+          <NavLink activeClassName={styles.activeNavItem} to="/MutualFunds">
+            Mutual Funds
+          </NavLink>
+        </MenuItem>
+        <MenuItem className={styles['nav-item']}>
+          <NavLink
+            activeClassName={styles.activeNavItem}
+            to="/LongtermInvestment"
+          >
+            Longterm Investment
+          </NavLink>
+        </MenuItem>
+        <MenuItem className={styles['nav-item']}>
+          <NavLink
+            activeClassName={styles.activeNavItem}
+            to="/AmbitionGrowthInvestment"
+          >
+            Ambition Growth Investment
           </NavLink>
         </MenuItem>
       </Menu>

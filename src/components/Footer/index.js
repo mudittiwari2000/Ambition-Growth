@@ -1,8 +1,8 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Link, animateScroll as scroll } from 'react-scroll'
-import clsx from 'clsx'
-import styles from './index.module.scss'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Link, animateScroll as scroll } from 'react-scroll';
+import clsx from 'clsx';
+import styles from './index.module.scss';
 
 // Material Components
 import {
@@ -12,8 +12,9 @@ import {
   Button,
   Paper,
   Menu,
-  MenuItem
-} from '@material-ui/core'
+  MenuItem,
+  useMediaQuery
+} from '@material-ui/core';
 
 // Material Icons
 import {
@@ -24,22 +25,23 @@ import {
   Pinterest as PinterestIcon,
   YouTube as YouTubeIcon,
   ArrowDropUp as ArrowDropUpIcon
-} from '@material-ui/icons'
+} from '@material-ui/icons';
 
 const Footer = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const isMdUp = useMediaQuery('(min-width: 1280px)');
 
   const openMenu = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const scrollToTop = () => {
-    scroll.scrollToTop()
-  }
+    scroll.scrollToTop();
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <footer className={styles.footer__section}>
@@ -55,7 +57,10 @@ const Footer = () => {
         <aside className={styles.footer__section_upper_right}>
           <Paper component="form" className={styles.root}>
             <div className={styles.icon_container}>
-              <EmailIcon color="primary" fontSize="large" />
+              <EmailIcon
+                color="primary"
+                fontSize={isMdUp ? 'large' : 'small'}
+              />
             </div>
             <InputBase
               className={styles.input}
@@ -66,7 +71,7 @@ const Footer = () => {
               type="submit"
               variant="contained"
               color="primary"
-              size="large"
+              size={isMdUp ? 'large' : 'medium'}
               className={styles.iconButton}
               aria-label="Submit"
             >
@@ -174,7 +179,6 @@ const Footer = () => {
           onClose={handleClose}
         >
           <MenuItem className={styles['nav-item']}>
-            {' '}
             <NavLink
               activeClass={styles.activeNavItem}
               to="/KYC"
@@ -213,7 +217,7 @@ const Footer = () => {
         </Menu>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

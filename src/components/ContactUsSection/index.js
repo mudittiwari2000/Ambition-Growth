@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 // Utilities
-import clsx from 'clsx'
-import { Fade } from 'react-reveal'
+import clsx from 'clsx';
+import { Fade } from 'react-reveal';
 
 // Stylesheet
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
 // Assets
-import illustration from '../../assets/images/contact_us_illustration.png'
+import illustration from '../../assets/images/contact_us_illustration.png';
 
 // Material Components
 import {
@@ -23,11 +23,11 @@ import {
   makeStyles,
   withStyles,
   useMediaQuery
-} from '@material-ui/core'
+} from '@material-ui/core';
 import {
   Smartphone as SmartphoneIcon,
   Person as PersonIcon
-} from '@material-ui/icons'
+} from '@material-ui/icons';
 
 const CssTextField = withStyles({
   root: {
@@ -49,7 +49,7 @@ const CssTextField = withStyles({
       }
     }
   }
-})(TextField)
+})(TextField);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,12 +62,12 @@ const useStyles = makeStyles((theme) => ({
   withoutLabel: {
     marginTop: theme.spacing(3)
   }
-}))
+}));
 
 const ContactUsSection = () => {
-  const classes = useStyles()
-  const [error, setError] = React.useState(false)
-  const isImageVisible = useMediaQuery('(min-width: 1280px)')
+  const classes = useStyles();
+  const [error, setError] = React.useState(false);
+  const isImageVisible = useMediaQuery('(min-width: 1280px)');
 
   return (
     <section
@@ -87,7 +87,8 @@ const ContactUsSection = () => {
                 <InputAdornment position="start">
                   <PersonIcon />
                 </InputAdornment>
-              )
+              ),
+              autoComplete: 'off'
             }}
             variant="outlined"
           />
@@ -102,7 +103,8 @@ const ContactUsSection = () => {
                 <InputAdornment position="start">
                   <SmartphoneIcon />
                 </InputAdornment>
-              )
+              ),
+              autoComplete: 'off'
             }}
             variant="outlined"
           />
@@ -158,7 +160,7 @@ const ContactUsSection = () => {
         </Fade>
       )}
     </section>
-  )
-}
+  );
+};
 
-export default ContactUsSection
+export default ContactUsSection;

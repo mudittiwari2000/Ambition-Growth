@@ -1,0 +1,117 @@
+.mutual_fund__section {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 4em 2em 3em;
+  position: relative;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 4em 1em 4em 2em;
+
+  @media (max-width: 1440px) {
+    margin-top: 3em;
+    margin-right: .95em;
+    margin-left: .95em;
+  }
+
+  @media (max-width: 1080px) {
+    margin-top: 2em;
+    margin-right: .9em;
+    margin-left: .9em;
+  }
+
+  @media (max-width: 720px) {
+    margin-top: 3em;
+    margin-right: .85em;
+    margin-left: .85em;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 1.75em;
+    margin-right: 0.8em;
+    margin-left: 0.8em;
+  }
+
+  .head__text {
+    font-weight: 900;
+    line-height: 1.1;
+    font-size: 2.85rem;
+    margin-bottom: .5em;
+    color: #000000;
+    max-width: 580px;
+
+    @media (max-width: 1440px) {
+      font-size: 2.75rem;
+      margin-bottom: .45em;
+      max-width: 540px;
+    }
+
+    @media (max-width: 1080px) {
+      font-size: 2.65rem;
+      margin-bottom: .4em;
+      max-width: 500px;
+    }
+
+    @media (max-width: 720px) {
+      font-size: 2.5rem;
+      margin-bottom: .375em;
+      max-width: 470px;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 2.35rem;
+      margin-bottom: .3em;
+      max-width: 435px;
+    }
+  }
+
+  .paragraph {
+    color: #6c6c6c;
+    font-weight: 500;
+    font-size: .9rem;
+    width: 96%;
+    max-width: 760px;
+
+    @media (max-width: 1440px) {
+      font-size: .85rem;
+      max-width: 740px;
+    }
+
+    @media (max-width: 1280px) {
+      font-size: .8rem;
+      max-width: none;
+    }
+
+    @media (max-width: 720px) {
+      font-size: .75rem;
+      max-width: none;
+    }
+
+    @media (max-width: 600px) {
+      font-size: .7rem;
+      max-width: none;
+    }
+  }
+}
+
+.right {
+  position: absolute;
+  left: 46%;
+  top: 10%;
+
+  .illustration {
+    width: 600px;
+
+    @media (max-width: 1440px) {
+      width: 500px;
+    }
+
+    @media (max-width: 1280px) {
+      display: none;
+    }
+  }
+}

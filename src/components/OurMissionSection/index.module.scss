@@ -2,8 +2,7 @@
   /* 100% of viewport minus Navbar height, minus Navbar top padding */
   background-color: var(--clr-bg);
   display: flex;
-  justify-content: space-between;
-  text-align: justify;
+  justify-content: space-around;
   margin-top: 1em;
   margin-bottom: 4em;
 }
@@ -13,7 +12,7 @@
   display: flex;
   flex-direction: column;
   max-width: 580px;
-  margin-top: 6em;
+  margin-top: 4em;
   margin-right: 1em;
 
   @media (max-width: 1440px) {
@@ -128,7 +127,7 @@
     list-style: decimal;
     margin-bottom: 0.75em;
 
-    & > li {
+    &>li {
       font-size: 0.975rem;
       color: #333;
     }

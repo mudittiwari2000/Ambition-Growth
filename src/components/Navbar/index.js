@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { NavLink } from 'react-router-dom'
-import { Link, animateScroll as scroll } from 'react-scroll'
-import styles from './index.module.scss'
+import React, { useState, useEffect, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Link, animateScroll as scroll } from 'react-scroll';
+import styles from './index.module.scss';
 
 // Material Components
 import {
@@ -12,52 +12,52 @@ import {
   Tooltip,
   IconButton,
   useMediaQuery
-} from '@material-ui/core'
+} from '@material-ui/core';
 
 // Material Icons
 import {
   ArrowDropDown as ArrowDropDownIcon,
   Menu as MenuIcon
-} from '@material-ui/icons'
+} from '@material-ui/icons';
 
-import clsx from 'clsx'
+import clsx from 'clsx';
 
 const Navbar = () => {
-  const [pageY, setPageY] = useState(0)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const [isDropdownOpen, setDropdownOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = useState(null)
-  const isMdUp = useMediaQuery('(min-width: 1080px)')
+  const [pageY, setPageY] = useState(0);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isMdUp = useMediaQuery('(min-width: 1080px)');
 
   const openDrawer = () => {
-    setDrawerOpen(true)
-  }
+    setDrawerOpen(true);
+  };
 
   const openMenu = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev)
-  }
+    setDropdownOpen((prev) => !prev);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   const scrollToTop = () => {
-    scroll.scrollToTop()
-  }
+    scroll.scrollToTop();
+  };
 
   const handleScroll = useCallback(() => {
-    setPageY(window.scrollY)
-  }, [setPageY])
+    setPageY(window.scrollY);
+  }, [setPageY]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   return (
     <nav className={clsx(styles.navbar, pageY > 20 ? styles.sticky : '')}>
@@ -79,14 +79,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-            <NavLink
-              activeClass={styles.activeNavItem}
-              to="/AboutUs"
-              smooth={true}
-              offset={-10}
-              spy={true}
-              duration={400}
-            >
+            <NavLink activeClassName={styles.activeNavItem} to="/AboutUs">
               About Us
             </NavLink>
           </li>
@@ -112,7 +105,12 @@ const Navbar = () => {
             </Box>
           </li>
           <li className={clsx(styles['nav-item'], styles['left-spacing'])}>
-            <Link activeClass={styles.activeNavItem} to="ContactUs">
+            <Link
+              activeClass={styles.activeNavItem}
+              to="ContactUs"
+              smooth={true}
+              duration={500}
+            >
               Contact Us
             </Link>
           </li>
@@ -148,14 +146,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className={clsx(styles['nav-item'], styles['top-spacing'])}>
-            <NavLink
-              activeClass={styles.activeNavItem}
-              to="/AboutUs"
-              smooth={true}
-              offset={-10}
-              spy={true}
-              duration={400}
-            >
+            <NavLink activeClass={styles.activeNavItem} to="/AboutUs">
               About Us
             </NavLink>
           </li>
@@ -281,7 +272,7 @@ const Navbar = () => {
         </MenuItem>
       </Menu>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

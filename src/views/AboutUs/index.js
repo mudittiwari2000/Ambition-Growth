@@ -5,16 +5,18 @@ import TitleComponent from '../../components/TitleComponent'
 
 // Sub Components
 import Navbar from '../../components/Navbar'
+import AboutUsSection from '../../components/AboutUsSection'
 import Footer from '../../components/Footer'
 
-const InvestmentPlan = () => {
+const AboutUs = () => {
   return (
     <div>
-      <TitleComponent title="Investment Plan | Ambition Growth" />
+      <TitleComponent title="AboutUs | Ambition Growth" />
       <Navbar />
+      <AboutUsSection />
       <Footer />
     </div>
   )
 }
 
-export default InvestmentPlan
+export default AboutUs

@@ -4,9 +4,8 @@
   display: flex;
   justify-content: space-between;
   text-align: justify;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 4em;
-
 }
 
 .right {
@@ -38,7 +37,6 @@
   }
 
   .sub_header {
-
     &__container {
       position: relative;
       text-align: left;
@@ -47,30 +45,30 @@
     &__text {
       color: var(--clr-primary);
       font-size: 1.2rem;
-      margin-bottom: .75em;
+      margin-bottom: 0.75em;
       padding-left: 5.5vw;
 
       @media (max-width: 1440px) {
         font-size: 1.1rem;
-        margin-bottom: .7em;
+        margin-bottom: 0.7em;
         padding-left: 5.5vw;
       }
 
       @media (max-width: 1080px) {
         font-size: 1.05rem;
-        margin-bottom: .65em;
+        margin-bottom: 0.65em;
         padding-left: 5.5vw;
       }
 
       @media (max-width: 720px) {
         font-size: 1rem;
-        margin-bottom: .75em;
+        margin-bottom: 0.75em;
         padding-left: 5.5vw;
       }
 
       @media (max-width: 600px) {
-        font-size: .95rem;
-        margin-bottom: .6em;
+        font-size: 0.95rem;
+        margin-bottom: 0.6em;
         padding-left: 5.5vw;
       }
     }
@@ -88,66 +86,64 @@
     font-weight: 900;
     line-height: 1.1;
     font-size: 2.85rem;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     color: #000000;
 
     @media (max-width: 1440px) {
       font-size: 2.75rem;
-      margin-bottom: .45em;
+      margin-bottom: 0.45em;
     }
 
     @media (max-width: 1080px) {
       font-size: 2.65rem;
-      margin-bottom: .4em;
+      margin-bottom: 0.4em;
     }
 
     @media (max-width: 720px) {
       font-size: 2.5rem;
-      margin-bottom: .375em;
+      margin-bottom: 0.375em;
     }
 
     @media (max-width: 600px) {
       font-size: 2.35rem;
-      margin-bottom: .3em;
+      margin-bottom: 0.3em;
     }
   }
 
   .paragraph {
     color: #6c6c6c;
     font-weight: 500;
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   &__list__head {
     font-size: 1.35rem;
     font-weight: 600;
-    margin-bottom: .45em;
-    margin-top: .75em;
+    margin-bottom: 0.45em;
+    margin-top: 0.75em;
   }
 
   &__list {
-    padding: 0 .75em .75em;
+    padding: 0 0.75em 0.75em;
     list-style: decimal;
-    margin-bottom: .75em;
+    margin-bottom: 0.75em;
 
-    &>li {
-      font-size: .975rem;
+    & > li {
+      font-size: 0.975rem;
       color: #333;
     }
   }
 
   &__footer {
-
     &_head {
       font-size: 1.35rem;
       font-weight: 600;
-      margin-bottom: .45em;
+      margin-bottom: 0.45em;
     }
   }
 }
 
 .left {
-
   display: flex;
 
   .illustration {

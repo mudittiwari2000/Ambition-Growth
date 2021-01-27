@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Ambition Growth
+
+### A React [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application#:~:text=From%20Wikipedia%2C%20the%20free%20encyclopedia,browser%20loading%20entire%20new%20pages).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

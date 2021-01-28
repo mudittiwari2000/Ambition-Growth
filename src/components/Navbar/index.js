@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react'
+<<<<<<< HEAD
 import { NavLink, useLocation } from 'react-router-dom'
 import { Link, animateScroll as scroll } from 'react-scroll'
 import logo from '../../assets/images/logo.png'
 import styles from './index.module.scss'
 
+=======
+import { NavLink } from 'react-router-dom'
+import { Link, animateScroll as scroll } from 'react-scroll'
+import styles from './index.module.scss'
+import logo from '../../assets/images/logo.png'
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
 // Material Components
 import {
   Box,
@@ -24,6 +31,7 @@ import {
 import clsx from 'clsx'
 
 const Navbar = () => {
+<<<<<<< HEAD
   const { pathname } = useLocation()
   const [pageY, setPageY] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -31,6 +39,12 @@ const Navbar = () => {
   const [isInvestmentDropdownOpen, setInvestmentDropdownOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
   const [anchorInvestmentEl, setAnchorInvestmentEl] = useState(null)
+=======
+  const [pageY, setPageY] = useState(0)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [isDropdownOpen, setDropdownOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null)
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
   const isMdUp = useMediaQuery('(min-width: 1080px)')
 
   const openDrawer = () => {
@@ -40,26 +54,35 @@ const Navbar = () => {
   const openMenu = (event) => {
     setAnchorEl(event.currentTarget)
   }
+<<<<<<< HEAD
 
   const openInvestmentMenu = (event) => {
     setAnchorInvestmentEl(event.currentTarget)
   }
+=======
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
 
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev)
   }
+<<<<<<< HEAD
 
   const toggleInvestmentDropdown = () => {
     setInvestmentDropdownOpen((prev) => !prev)
   }
+=======
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
 
   const handleClose = () => {
     setAnchorEl(null)
   }
+<<<<<<< HEAD
 
   const handleInvestmentClose = () => {
     setAnchorInvestmentEl(null)
   }
+=======
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
 
   const scrollToTop = () => {
     scroll.scrollToTop()
@@ -74,10 +97,13 @@ const Navbar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
+<<<<<<< HEAD
 
   useEffect(() => {
     scrollToTop()
   }, [pathname])
+=======
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
 
   return (
     <nav className={clsx(styles.navbar, pageY > 20 ? styles.sticky : '')}>

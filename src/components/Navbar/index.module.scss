@@ -36,7 +36,11 @@
 }
 
 .logo {
+<<<<<<< HEAD
   height: 80px;
+=======
+  height: 100px;
+>>>>>>> a44cc3a0367826b0932634d5ff27914e0a85e182
 
   &:not(.sticky) {
     transform: scaleY(0.9);

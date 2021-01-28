@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Link, animateScroll as scroll } from 'react-scroll';
-import styles from './index.module.scss';
-
+import React, { useState, useEffect, useCallback } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Link, animateScroll as scroll } from 'react-scroll'
+import styles from './index.module.scss'
+import logo from '../../assets/images/logo.png'
 // Material Components
 import {
   Box,
@@ -12,61 +12,57 @@ import {
   Tooltip,
   IconButton,
   useMediaQuery
-} from '@material-ui/core';
+} from '@material-ui/core'
 
 // Material Icons
 import {
   ArrowDropDown as ArrowDropDownIcon,
   Menu as MenuIcon
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 const Navbar = () => {
-  const [pageY, setPageY] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const isMdUp = useMediaQuery('(min-width: 1080px)');
+  const [pageY, setPageY] = useState(0)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [isDropdownOpen, setDropdownOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const isMdUp = useMediaQuery('(min-width: 1080px)')
 
   const openDrawer = () => {
-    setDrawerOpen(true);
-  };
+    setDrawerOpen(true)
+  }
 
   const openMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
-  };
+    setDropdownOpen((prev) => !prev)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
+    scroll.scrollToTop()
+  }
 
   const handleScroll = useCallback(() => {
-    setPageY(window.scrollY);
-  }, [setPageY]);
+    setPageY(window.scrollY)
+  }, [setPageY])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
 
   return (
     <nav className={clsx(styles.navbar, pageY > 20 ? styles.sticky : '')}>
       <NavLink exact to="/">
-        <img
-          className={styles.logo}
-          src="/static/images/logo.png"
-          alt="Ambition Growth"
-        />
+        <img className={styles.logo} src={logo} alt="Ambition Growth" />
       </NavLink>
       {isMdUp ? (
         <ul className={styles['nav-menu']}>
@@ -272,7 +268,7 @@ const Navbar = () => {
         </MenuItem>
       </Menu>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

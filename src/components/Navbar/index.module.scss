@@ -36,10 +36,10 @@
 }
 
 .logo {
-  height: 50px;
+  height: 100px;
 
   &:not(.sticky) {
-    transform: scaleY(.9);
+    transform: scaleY(0.9);
   }
 
   @media (max-width: 1440px) {
@@ -74,17 +74,17 @@
   cursor: pointer;
 }
 
-.nav-item.left-spacing+.nav-item.left-spacing {
+.nav-item.left-spacing + .nav-item.left-spacing {
   margin-left: 1.75em;
 }
 
-.nav-item.top-spacing+.nav-item.top-spacing {
+.nav-item.top-spacing + .nav-item.top-spacing {
   margin-top: 1.75em;
 }
 
 .dropdown-item {
-  margin-top: .75em;
-  margin-left: .75em;
+  margin-top: 0.75em;
+  margin-left: 0.75em;
 }
 
 .activeNavItem {

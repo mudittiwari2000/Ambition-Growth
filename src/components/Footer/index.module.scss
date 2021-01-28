@@ -47,7 +47,7 @@
       width: 100;
       display: flex;
       flex-direction: column;
-      margin-top: 1.15em;
+      margin-top: 1.35em;
       margin-right: 1em;
       align-self: flex-end;
 
@@ -67,43 +67,43 @@
       }
     }
   }
+}
 
-  .root {
-    display: flex;
-    align-items: center;
-    background-color: #3b3b3b;
-    width: 96%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: 1em;
+.root {
+  display: flex;
+  align-items: center;
+  background-color: #3b3b3b;
+  width: 96%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: 1em;
+}
+
+.icon_container {
+  padding: .35em;
+
+  &>svg {
+    color: var(--clr-primary);
   }
+}
 
-  .icon_container {
-    padding: .35em;
+.input {
+  flex: 1;
+  color: #fff;
+  padding: .15em;
+  font-size: 1.25rem;
 
-    &>svg {
-      color: var(--clr-primary);
-    }
+  @media (max-width: 720px) {
+    font-size: 1.1s5rem;
   }
+}
 
-  .input {
-    flex: 1;
-    color: #fff;
-    padding: .15em;
-    font-size: 1.25rem;
+.iconButton {
+  padding: .75em 1.35em;
 
-    @media (max-width: 720px) {
-      font-size: 1.1s5rem;
-    }
-  }
-
-  .iconButton {
-    padding: .75em 1.35em;
-
-    @media (max-width: 720px) {
-      padding: .75em 1.15em;
-      font-size: .85rem;
-    }
+  @media (max-width: 720px) {
+    padding: .75em 1.15em;
+    font-size: .85rem;
   }
 }
 
@@ -178,73 +178,129 @@
   font-weight: 700;
   line-height: 1.1;
   font-size: 2.45rem;
-  margin-bottom: .5em;
+  margin-bottom: .85em;
 
   @media (max-width: 1440px) {
     font-size: 2.4rem;
-    margin-bottom: .45em;
+    margin-bottom: .8em;
   }
 
   @media (max-width: 1080px) {
     font-size: 2.35rem;
-    margin-bottom: .4em;
+    margin-bottom: .75em;
   }
 
   @media (max-width: 720px) {
     font-size: 2.3rem;
-    margin-bottom: .375em;
+    margin-bottom: .7em;
   }
 
   @media (max-width: 600px) {
     font-size: 2.25rem;
-    margin-bottom: .3em;
+    margin-bottom: .65em;
   }
 }
 
-.nav-menu {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
-  margin-right: 1em;
-}
-
-.nav-item {
-  font-weight: 500;
-  font-size: .95rem;
-  transition: color 300ms ease-out;
-  font-family: inherit;
-}
-
-.nav-item:hover {
-  color: var(--clr-primary);
-  cursor: pointer;
-}
-
-.nav-item.left-spacing+.nav-item.left-spacing {
-  margin-left: 1.75em;
-
-  @media (max-width: 1440px) {
-    margin-left: 1.5em;
+nav {
+  .nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin-right: 1em;
   }
 
-  @media (max-width: 1080px) {
-    margin-left: 1.25em;
+  .nav-item {
+    font-weight: 500;
+    font-size: .95rem;
+    transition: color 300ms ease-out;
+    font-family: inherit;
   }
 
-  @media (max-width: 720px) {
-    margin-left: 1em;
+  .nav-item:hover {
+    color: var(--clr-primary);
+    cursor: pointer;
   }
 
-  @media (max-width: 600px) {
-    margin-left: .85em;
+  .nav-item.left-spacing+.nav-item.left-spacing {
+    margin-left: 1.75em;
+
+    @media (max-width: 1440px) {
+      margin-left: 1.5em;
+    }
+
+    @media (max-width: 1080px) {
+      margin-left: 1.25em;
+    }
+
+    @media (max-width: 720px) {
+      margin-left: 1em;
+    }
+
+    @media (max-width: 600px) {
+      margin-left: .85em;
+    }
+  }
+
+  .dropdown-item {
+    margin-top: .75em;
+    margin-left: .75em;
+  }
+
+  .activeNavItem {
+    color: var(--clr-primary);
   }
 }
 
-.dropdown-item {
-  margin-top: .75em;
-  margin-left: .75em;
+.translate_down__icons {
+  transform: translateY(4px);
 }
 
-.activeNavItem {
-  color: var(--clr-primary);
+.facebook_icon {
+  transform: scale(1.25);
+  transition: transform 300ms ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+    color: #3b5998;
+  }
+}
+
+.instagram_icon {
+  transform: scale(1.25);
+  transition: transform 300ms ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+    color: #e1306c;
+  }
+}
+
+.twitter_icon {
+  transform: scale(1.25);
+  transition: transform 300ms ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+    color: #1da1f2;
+  }
+}
+
+.pinterest_icon {
+  transform: scale(1.25);
+  transition: transform 300ms ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+    color: #e60023;
+  }
+}
+
+.youtube_icon {
+  transform: scale(1.25);
+  transition: transform 300ms ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+    color: #ff0000;
+  }
 }

@@ -117,6 +117,12 @@
     margin-top: 2em;
   }
 
+  .submitBtn:disabled {
+    background-color: #999;
+    color: #222;
+    margin-top: 2em;
+  }
+
   .terms_of_use {
     color: #f5f5f5;
     font-weight: 900;

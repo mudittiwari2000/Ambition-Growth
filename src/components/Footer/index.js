@@ -65,9 +65,6 @@ const Footer = () => {
             <div className={styles.sub_header__line}></div>
           </div>
           <h1 className={styles.head__text}>Stay Tuned For Our Updates</h1>
-        </aside>
-
-        <aside className={styles.footer__section_upper_right}>
           <Paper component="form" className={styles.root}>
             <div className={styles.icon_container}>
               <EmailIcon
@@ -91,40 +88,43 @@ const Footer = () => {
               Submit
             </Button>
           </Paper>
+        </aside>
+
+        <aside className={styles.footer__section_upper_right}>
           <ul className={styles.footer__section_upper_right_social_list}>
             <li>
               <IconButton
                 className={styles.footer__section_upper_right_social_list_item}
               >
-                <FacebookIcon />
+                <FacebookIcon className={styles.facebook_icon} />
               </IconButton>
             </li>
             <li>
               <IconButton
                 className={styles.footer__section_upper_right_social_list_item}
               >
-                <InstagramIcon />
+                <InstagramIcon className={styles.instagram_icon} />
               </IconButton>
             </li>
             <li>
               <IconButton
                 className={styles.footer__section_upper_right_social_list_item}
               >
-                <TwitterIcon />
+                <TwitterIcon className={styles.twitter_icon} />
               </IconButton>
             </li>
             <li>
               <IconButton
                 className={styles.footer__section_upper_right_social_list_item}
               >
-                <PinterestIcon />
+                <PinterestIcon className={styles.pinterest_icon} />
               </IconButton>
             </li>
             <li>
               <IconButton
                 className={styles.footer__section_upper_right_social_list_item}
               >
-                <YouTubeIcon />
+                <YouTubeIcon className={styles.youtube_icon} />
               </IconButton>
             </li>
           </ul>
@@ -133,7 +133,8 @@ const Footer = () => {
               className={styles.footer__section_upper_right_contact_list_item}
             >
               <a href="mailto:ambitiongrowth@yahoo.com">
-                ambitiongrowth@yahoo.com&nbsp; <EmailIcon />
+                ambitiongrowth@yahoo.com&nbsp;{' '}
+                <EmailIcon className={styles.translate_down__icons} />
               </a>
             </li>
             <li
@@ -141,7 +142,7 @@ const Footer = () => {
             >
               <a href="tel:+918889899900">
                 +91 8889899900 &nbsp;
-                <ContactsIcon />
+                <ContactsIcon className={styles.translate_down__icons} />
               </a>
             </li>
             <li
@@ -149,7 +150,7 @@ const Footer = () => {
             >
               <address>
                 323 Tilwara Rd, Ward no.32, Jabalpur, 482003 &nbsp;
-                <HomeIcon />
+                <HomeIcon className={styles.translate_down__icons} />
               </address>
             </li>
           </ul>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 // Utilities
 import clsx from 'clsx';
 import { Fade } from 'react-reveal';
+import emailjs from 'emailjs-com';
 
 // Stylesheet
 import styles from './index.module.scss';
@@ -15,15 +16,21 @@ import {
   Button,
   Checkbox,
   InputAdornment,
+  CircularProgress,
   TextField,
   FormControl,
   FormControlLabel,
   FormHelperText,
   FormGroup,
+  Snackbar,
+  Slide,
   makeStyles,
   withStyles,
   useMediaQuery
 } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+
+// Material Icons
 import {
   Smartphone as SmartphoneIcon,
   Person as PersonIcon
@@ -66,8 +73,52 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactUsSection = () => {
   const classes = useStyles();
-  const [error, setError] = React.useState(false);
+  const [error, setError] = useState(false);
+  const [fullName, setFullName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [isLoading, setLoading] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const isImageVisible = useMediaQuery('(min-width: 1280px)');
+
+  const sendEmail = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await emailjs.send(
+        'service_3429yk8',
+        'template_1saiiie',
+        {
+          full_name: fullName,
+          phone_number: phoneNumber
+        },
+        'user_RysYQ8Jhz16Ax9oz6uSXA'
+      );
+      console.log(response);
+      setLoading(false);
+      setSnackbarOpen(true);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [fullName, phoneNumber]);
+
+  const handleFullNameField = (event) => {
+    setFullName(event.target.value);
+  };
+  const handlePhoneNumberField = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    sendEmail();
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
 
   return (
     <section
@@ -76,9 +127,11 @@ const ContactUsSection = () => {
     >
       <aside className={styles.left}>
         <h3 className={styles.contact_us__header}>Request a Call Back</h3>
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <CssTextField
             required
+            value={fullName}
+            onChange={handleFullNameField}
             label="Full Name"
             id="contact-us-full-name"
             className={clsx(classes.margin, styles.textField)}
@@ -94,6 +147,8 @@ const ContactUsSection = () => {
           />
           <CssTextField
             required
+            value={phoneNumber}
+            onChange={handlePhoneNumberField}
             label="Mobile Number"
             id="contact-us-mobile"
             type="tel"
@@ -125,8 +180,10 @@ const ContactUsSection = () => {
                 }
                 label={
                   <p>
-                    I accept the{' '}
-                    <span className={styles.terms_of_use}>Terms of Use</span>.
+                    I acknowledge I have read the{' '}
+                    <a href="#!" className={styles.terms_of_use}>
+                      Terms of Use
+                    </a>
                   </p>
                 }
               />
@@ -143,8 +200,9 @@ const ContactUsSection = () => {
             color="primary"
             size="large"
             className={styles.submitBtn}
+            disabled={error}
           >
-            Submit
+            {isLoading ? <CircularProgress fullWidth /> : 'Submit'}
           </Button>
         </form>
       </aside>
@@ -159,6 +217,21 @@ const ContactUsSection = () => {
           </figure>
         </Fade>
       )}
+      <Snackbar
+        open={snackbarOpen}
+        TransitionComponent={Slide}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <MuiAlert
+          onClose={handleSnackbarClose}
+          elevation={6}
+          variant="filled"
+          severity="success"
+        >
+          Your Request to Call back has been received!
+        </MuiAlert>
+      </Snackbar>
     </section>
   );
 };
